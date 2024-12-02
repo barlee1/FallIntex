@@ -1,0 +1,25 @@
+{
+  "name": "fallintex",
+  "version": "1.0.0",
+  "description": "the server side of our website for turtleshelter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barlee1/FallIntex.git"
+  },
+  "author": "Kylee Brown, McKenna Brown, Luke Kehl, Emma Pratt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/barlee1/FallIntex/issues"
+  },
+  "homepage": "https://github.com/barlee1/FallIntex#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.1",
+    "knex": "^3.1.0",
+    "pg": "^8.13.1"
+  }
+}
