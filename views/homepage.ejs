@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title || "Turtle Shelter Project" %></title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>TURTLE SHELTER PROJECT</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#story">Jen's Story</a></li>
+                    <li><a href="#sponsors">Thank You to Our Sponsors</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#help">How You Can Help</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-overlay">
+            <h2>Helping to save lives of people experiencing homelessness</h2>
+            <h1>STARTS WITH YOU</h1>
+            <a href="#help" class="btn">Learn More</a>
+        </div>
+    </section>
+
+    <main>
+        <section id="about" class="about">
+            <div class="content">
+                <h2>What is a Turtle Shelter Vest?</h2>
+                <p>A high-tech but simple solution to help save lives – a portable "shelter" you can carry with you, just like a turtle… and you can help!</p>
+                <p>One winter when Jen was homeless, 7 of her friends froze to death. She found a solution: High-tech foam vests that are inexpensive, keep a person warm to 10 degrees below zero, and alleviate suffering.</p>
+                <p><em>YOU</em> can request vests for your community – and you can make vests with your friends, business colleagues, church members, or club members too!</p>
+            </div>
+        </section>
+
+        <section id="actions" class="actions">
+            <div class="action-item">
+                <h3>About</h3>
+                <p>Learn Jen's story, from homelessness to saving lives, plus our mission, team, and all about the tech that makes our vests so special.</p>
+                <a href="#about" class="link">Learn More →</a>
+            </div>
+            <div class="logo-image">
+                <img src="/images/turtle-logo.png" alt="Every Life Has Value Logo">
+            </div>
+            <div class="action-item">
+                <h3>Take Action</h3>
+                <p>Ready to take the next step? You can request vests, donate, make vests yourself, or organize an event!</p>
+                <a href="#help" class="link">Find Out How →</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; <%= new Date().getFullYear() %> Turtle Shelter Project. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
