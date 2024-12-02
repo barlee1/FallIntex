@@ -1,11 +1,107 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Volunteer</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volunteer</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    function toggleSewingQuestions(value) {
+        const sewingQuestions = document.querySelector('.sewing-questions');
+        if (value === "sewing") {
+            sewingQuestions.style.display = 'block';
+        } else {
+            sewingQuestions.style.display = 'none';
+        }
+    }
+</script>
 </head>
 <body>
         <!-- Nav Bar -->
         <%- include("partials/navbar") %>
+
+  <div class="card">
+    <div class="card-header">Schedule Your Own Event</div>
+    <div class="card-content">
+      <p>Turtle Shelter Project vests are the perfect service project/volunteer activity for groups of all sizes and types.  
+        From an individual or family to hundreds of participants at corporate events or conferences, participants will be part of 
+        making vests to help save the lives of people in need. It takes 9 volunteers hours to make a vest, so we need your help!</p>
+
+        <p>We can plan your event for the skill levels of your volunteers, and when we say that EVERY person can help, we mean it!  
+        We will meet you and your volunteers at your level of skill, time and space.
+        We provide all of the written and video instructions and materials - you provide the space and volunteers!  
+        After your group has completed their tasks, simply send the partially completed vests back to us for expert sewing, 
+        and then we will send them back to you or to a location you specify.</p>
+        <p>Please fill out the form below and tell us about your event idea so that we can provide options for you and your group.</p>
+
+        <form action="/submit" method="POST">
+            <label for="first-name">First Name:</label>
+            <input type="text" id="first-name" name="firstName" required>
+    
+            <label for="last-name">Last Name:</label>
+            <input type="text" id="last-name" name="lastName" required>
+    
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+    
+            <label for="phone-number">Phone Number:</label>
+            <input type="tel" id="phone-number" name="phoneNumber" required>
+    
+            <label for="organization">Organization:</label>
+            <input type="text" id="organization" name="organization">
+    
+            <label for="event-date">Date of Event:</label>
+            <input type="date" id="event-date" name="eventDate" required>
+    
+            <label for="event-location">Location of Event:</label>
+            <input type="text" id="street-address" name="streetAddress" placeholder="Street Address" required>
+            <input type="text" id="city" name="city" placeholder="City" required>
+            <input type="text" id="state" name="state" placeholder="State" required>
+    
+            <label for="expected-people">How many people do you expect to show up?</label>
+            <input type="number" id="expected-people" name="expectedPeople" min="1" required>
+    
+            <label for="project-type">Sewing or Non-Sewing Project:</label>
+            <select id="project-type" name="projectType" onchange="toggleSewingQuestions(this.value)" required>
+                <option value="">-- Select --</option>
+                <option value="sewing">Sewing</option>
+                <option value="non-sewing">Non-Sewing</option>
+            </select>
+    
+            <div class="sewing-questions">
+                <h3>Sewing Project Details</h3>
+                <label for="basic-sewing-skills">How many of said people have basic sewing skills?</label>
+                <input type="number" id="basic-sewing-skills" name="basicSewingSkills" min="0">
+    
+                <label for="advanced-sewing-skills">How many of said people have advanced sewing skills?</label>
+                <input type="number" id="advanced-sewing-skills" name="advancedSewingSkills" min="0">
+    
+                <label for="sewing-machines">How many sewing machines can you bring?</label>
+                <input type="number" id="sewing-machines" name="sewingMachines" min="0">
+    
+                <label for="sergers">How many sergers can you bring?</label>
+                <input type="number" id="sergers" name="sergers" min="0">
+            </div>
+    
+            <button type="submit" style="margin-top: 20px;">Submit</button>
+        </form>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header">Volunteer From Home</div>
+    <div class="card-content">
+      <p>This card has additional information and an image.</p>
+      <img src="https://via.placeholder.com/400" alt="Another Placeholder">
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.card-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const card = header.parentElement;
+        card.classList.toggle('open');
+      });
+    });
+  </script>
 </body>
 </html>
