@@ -14,11 +14,17 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use(express.urlencoded({extended: true}));
 
+app.use(express.static(path.join(__dirname, 'public')));
+
+
 // Routes to Pages
 // home
 app.get('/', (req, res) => {
-    const error = null;
-    res.render("home", { error }); // Pass 'error' to the template
+    res.render('homepage', {
+        title: 'Turtle Shelter Project',
+        aboutText: 'Custom About Text if needed...',
+        jensStory: 'Custom Story Text if needed...'
+    });
 });
 
 //about
