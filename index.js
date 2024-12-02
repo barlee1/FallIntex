@@ -12,6 +12,9 @@ app.set("view engine", "ejs");
 
 app.set("views", path.join(__dirname, "views"));
 
+// Serve static files from the 'public' folder
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(express.urlencoded({extended: true}));
 
 app.use(express.static(path.join(__dirname, 'public')));
