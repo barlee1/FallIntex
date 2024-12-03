@@ -11,16 +11,33 @@
 <body>
     <!-- Nav Bar -->
     <%- include("partials/navbar") %>
-
     <section class="hero" style="background-image: url('/images/Homepage.jpg'); background-size: cover; background-position: center;">
         <div class="hero-overlay">
-            <h2>Every Life Has Value. Every Person Can Serve</h2>
-            <h1>STARTS WITH YOU</h1>
-            <a href="#help" class="btn">Learn More</a>
+            <h2>Every Life Has Value. Every Person Can Serve.</h2>
+            <h1>IT STARTS WITH YOU</h1>
         </div>
     </section>
-    
-
+    <section id="stats" class="stats">
+        <h2 class="stats-title">Our Impact</h2>
+        <div class="stats-container">
+            <div class="stat-box">
+                <h3 class="stat-number" data-target="5900">0</h3>
+                <p>Vests Made</p>
+            </div>
+            <div class="stat-box">
+                <h3 class="stat-number" data-target="1562">0</h3>
+                <p>Volunteer Hours</p>
+            </div>
+            <div class="stat-box">
+                <h3 class="stat-number" data-target="749">0</h3>
+                <p>Volunteers</p>
+            </div>
+        </div>
+        <!-- Learn More Button -->
+        <div class="stats-btn-container">
+            <a href="/about" class="btn stats-btn">Learn More</a>
+        </div>
+    </section>
     <main>
         <!-- Jen's Story Section -->
         <section id="story" class="story">
@@ -39,8 +56,39 @@
             </div>
         </section>
     </main>
-
     <!-- Footer -->
     <%- include("partials/footer") %>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const stats = document.querySelectorAll('.stat-number');
+            const statsSection = document.querySelector('#stats');
+            let statsAnimated = false;
+            const animateStats = () => {
+                stats.forEach(stat => {
+                    const updateCount = () => {
+                        const target = +stat.getAttribute('data-target');
+                        const count = +stat.innerText;
+                        const increment = Math.ceil(target / 100);
+                        if (count < target) {
+                            stat.innerText = count + increment;
+                            setTimeout(updateCount, 20); // Speed of increment
+                        } else {
+                            stat.innerText = target;
+                        }
+                    };
+                    updateCount();
+                });
+            };
+            const handleScroll = () => {
+                const statsPosition = statsSection.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                if (statsPosition < screenPosition && !statsAnimated) {
+                    statsAnimated = true;
+                    animateStats();
+                }
+            };
+            window.addEventListener('scroll', handleScroll);
+        });
+    </script>
 </body>
 </html>
