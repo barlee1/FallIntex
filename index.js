@@ -11,16 +11,18 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 
 // Database connection using Knex.js
-const knex = require("knex")({
-    client: "pg",
-    connection: {
-        host: "localhost",
-        user: "kyleebrown",
-        password: "Admin",
-        database: "assignment3",
-        port: 5432,
-    },
+const knex = require("knex") ({
+    client : "pg",
+    connection : {
+        host : process.env.RDS_HOSTNAME || "localhost",
+        user : process.env.RDS_USERNAME || "kyleebrown",
+        password : process.env.RDS_PASSWORD || "Admin",
+        database : process.env.RDS_DB_NAME || "assignment3",
+        port : process.env.RDS_PORT || 5432,
+        ssl : process.env.DB_SSL ? {rejectUnauthorized : false} : false
+    }
 });
+
 
 // ===================== Routes ===================== //
 
