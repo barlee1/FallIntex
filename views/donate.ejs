@@ -22,8 +22,10 @@
         <!-- Nav Bar -->
         <%- include("partials/navbar") %>
 
-        <!-- Main Content -->
+<!-- Main Content -->
 <div class="main-content">
+
+<!-- Card 1 -->
   <div class="card">
     <div class="card-header">Become a Partner or Sponsor</div>
     <div class="card-content">
@@ -77,8 +79,36 @@
       </form>
     </div>
     </div>
+
+<!-- Sponsor Logo and Links -->
+ <!-- Sponsor Logo and Links -->
+  <div class="sponsor-logos">
+    <a href="https://designsourceslc.com/" target="_blank">
+      <img src="/images/DesignSourceLogo.png" alt="Design Source Logo">
+    </a>
+    <a href="https://www.cheneybrothersconstruction.com/" target="_blank">
+      <img src="/images/cheneybrothersconstructionlogo.png" alt="Cheney Brothers Construction Logo">
+    </a>
+    <a href="https://www.goodshepherdogden.org/" target="_blank">
+      <img src="/images/EpiscopalChurchLogo.png" alt="Episcopal Church Logo">
+    </a>
+    <a href="https://www.futurefoam.com/" target="_blank">
+      <img src="/images/FutureFoamLogo.png" alt="Future Foam Logo">
+    </a>
+    <a href="http://www.givemeachanceutah.org/" target="_blank">
+      <img src="/images/GMACLogo.png" alt="GMAC Logo">
+    </a>
+    <a href="https://www.softminkyblankets.com/" target="_blank">
+      <img src="/images/MinkyLogo.jpeg" alt="Minky Logo">
+    </a>
+    <a href="https://www.owfinc.com/" target="_blank">
+      <img src="/images/OutdoorWildernessFabricsLogo.png" alt="Outdoor Wilderness Fabrics Logo">
+    </a>
+  </div>
 </div>
 
+      <!-- Footer -->
+      <%- include("partials/footer") %>
 
   <script>
     document.querySelectorAll('.card-header').forEach(header => {
@@ -89,7 +119,5 @@
     });
   </script>
 
-      <!-- Footer -->
-      <%- include("partials/footer") %>
 </body>
 </html>

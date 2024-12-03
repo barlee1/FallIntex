@@ -8,6 +8,12 @@ body {
     background-color: #f4f4f9; /* Light background for better contrast */
 }
 
+.main-content
+{
+    padding-top: 80px; /* Adjust for a taller header on smaller screens */
+
+}
+
 /* ===== HEADER (Navigation Bar) ===== */
 header {
     background-color: #222; /* Dark header for better contrast */
@@ -307,6 +313,7 @@ footer .contact-info a:hover {
     border-radius: 5px;
 }
 
+
 /* Form Containers */
 .login-container, .create-account-container {
     max-width: 400px;
@@ -438,3 +445,24 @@ footer .contact-info a:hover {
     background-color: #005f5f;
     transform: scale(1.05); /* Slight zoom effect on hover */
 }
+
+.sponsor-logos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Adds spacing between images */
+    justify-content: center; /* Centers the images */
+  }
+  
+  .sponsor-logos img {
+    width: 150px; /* Set the width for all images */
+    height: auto; /* Maintains the aspect ratio */
+    object-fit: contain; /* Ensures images fit nicely within the size constraints */
+    border: 1px solid #ddd; /* Optional: Add a border for styling */
+    border-radius: 5px; /* Optional: Round the corners */
+    transition: transform 0.3s ease; /* Smooth scaling effect on hover */
+  }
+  
+  .sponsor-logos img:hover {
+    transform: scale(1.1); /* Slightly enlarges the image on hover */
+  }
+  
