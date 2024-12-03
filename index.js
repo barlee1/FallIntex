@@ -6,7 +6,7 @@ let path = require("path");
 
 let security = false;
 
-const port = 5500;
+const port = process.env.port || 5500;
 
 const bcrypt = require('bcrypt');
 
@@ -90,11 +90,12 @@ app.get('/donate', (req, res) => {
 const knex = require("knex") ({
     client : "pg",
     connection : {
-        host : "localhost",
-        user : "kyleebrown",
-        password : "Admin",
-        database : "assignment3",
-        port : 5432
+        host : process.env.RDS_HOSTNAME || "localhost",
+        user : process.env.RDS_USERNAME || "kyleebrown",
+        password : process.env.RDS_PASSWORD || "Admin",
+        database : process.env.RDS_DB_NAME || "assignment3",
+        port : process.env.RDS_PORT || 5432,
+        ssl : process.env.DB_SSL ? {rejectUnauthorized : false} : false
     }
 });
 
