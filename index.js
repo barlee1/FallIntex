@@ -48,6 +48,7 @@ app.get('/donate', (req, res) => {
     res.render("donate", { error }); // Pass 'error' to the template
 });
 
+
 const knex = require("knex") ({
     client : "pg",
     connection : {
