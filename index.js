@@ -1,50 +1,17 @@
 let express = require("express");
-
 let app = express();
-
 let path = require("path");
-
 let security = false;
-
 const port = process.env.PORT || 5500;
-
+// Configure view engine
 app.set("view engine", "ejs");
-
 app.set("views", path.join(__dirname, "views"));
 
 // Serve static files from the 'public' folder
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
+app.use(express.urlencoded({ extended: true }));
 
-app.use(express.urlencoded({extended: true}));
-
-
-// Routes to Pages
-// home
-app.get('/', (req, res) => {
-    const error = null;
-    res.render('homepage', { error });
-});
-
-//about
-app.get('/about', (req, res) => {
-    const error = null;
-    res.render("about", { error }); // Pass 'error' to the template
-});
-
-//Volunteer
-app.get('/volunteer', (req, res) => {
-    const error = null;
-    res.render("volunteer", { error }); // Pass 'error' to the template
-});
-
-
-//donate
-app.get('/donate', (req, res) => {
-    const error = null;
-    res.render("donate", { error }); // Pass 'error' to the template
-});
-
-
+// Database connection using Knex.js
 const knex = require("knex") ({
     client : "pg",
     connection : {
@@ -58,4 +25,72 @@ const knex = require("knex") ({
 });
 
 
-app.listen(port, () => console.log("Express App has started and server is listening!"));
+// ===================== Routes ===================== //
+
+
+// Routes to Pages
+// home
+app.get('/', (req, res) => {
+    const error = null;
+    res.render('homepage', { error });
+
+});
+
+// About Page
+app.get("/about", (req, res) => {
+    const error = null;
+    res.render("about", { error });
+});
+
+// Volunteer Page
+app.get("/volunteer", (req, res) => {
+    const error = null;
+    res.render("volunteer", { error });
+});
+
+
+
+//donate
+app.get('/donate', (req, res) => {
+    const error = null;
+    res.render("donate", { error }); // Pass 'error' to the template
+});
+
+
+
+// Login Page
+app.get("/login", (req, res) => {
+    res.render("login", { title: "Login" });
+});
+
+
+// Create Account Page
+app.get("/create-account", (req, res) => {
+    res.render("create-account", { title: "Create Account" });
+});
+
+// Handle Create Account Form Submission
+app.post("/create-account", async (req, res) => {
+    const { firstname, lastname, email, city, state, phonenumber } = req.body;
+    try {
+        await knex("users").insert({
+            firstname,
+            lastname,
+            email,
+            city,
+            state,
+            phonenumber,
+        });
+
+        res.send("Account created successfully!");
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("An error occurred. Please try again.");
+    }
+});
+
+// ===================== Server Startup ===================== //
+
+app.listen(port, () =>
+    console.log(`Express App has started and server is listening on port ${port}!`)
+);

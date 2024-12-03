@@ -15,6 +15,7 @@
         <div class="hero-overlay">
             <h2>Every Life Has Value. Every Person Can Serve.</h2>
             <h1>IT STARTS WITH YOU</h1>
+
         </div>
     </section>
     <section id="stats" class="stats">
@@ -38,6 +39,7 @@
             <a href="/about" class="btn stats-btn">Learn More</a>
         </div>
     </section>
+
     <main>
         <!-- Jen's Story Section -->
         <section id="story" class="story">
@@ -58,17 +60,20 @@
     </main>
     <!-- Footer -->
     <%- include("partials/footer") %>
+
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const stats = document.querySelectorAll('.stat-number');
             const statsSection = document.querySelector('#stats');
             let statsAnimated = false;
+
             const animateStats = () => {
                 stats.forEach(stat => {
                     const updateCount = () => {
                         const target = +stat.getAttribute('data-target');
                         const count = +stat.innerText;
                         const increment = Math.ceil(target / 100);
+
                         if (count < target) {
                             stat.innerText = count + increment;
                             setTimeout(updateCount, 20); // Speed of increment
@@ -79,16 +84,20 @@
                     updateCount();
                 });
             };
+
             const handleScroll = () => {
                 const statsPosition = statsSection.getBoundingClientRect().top;
                 const screenPosition = window.innerHeight / 1.2;
+
                 if (statsPosition < screenPosition && !statsAnimated) {
                     statsAnimated = true;
                     animateStats();
                 }
             };
+
             window.addEventListener('scroll', handleScroll);
         });
     </script>
+
 </body>
 </html>

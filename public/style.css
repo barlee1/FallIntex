@@ -268,31 +268,38 @@ footer .contact-info a:hover {
     max-width: 100%;
     border-radius: 5px;
 }
+
 /* Form Containers */
 .login-container, .create-account-container {
     max-width: 400px;
     margin: 50px auto;
     padding: 20px;
+
     background: #F9F9F9;
+
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
+
 .login-container h1, .create-account-container h1 {
     margin-bottom: 20px;
     color: #333;
 }
+
 /* Form Styling */
 .form-group {
     margin-bottom: 15px;
     text-align: left;
 }
+
 .form-group label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
     color: #333;
 }
+
 .form-group input {
     width: 100%;
     padding: 10px;
@@ -300,6 +307,7 @@ footer .contact-info a:hover {
     border-radius: 5px;
     font-size: 1rem;
 }
+
 /* Buttons for Forms */
 .form-btn {
     background-color: #008080;
@@ -312,17 +320,21 @@ footer .contact-info a:hover {
     display: block;
     width: 100%;
 }
+
 .form-btn:hover {
     background-color: #005F5F;
 }
+
 /* Links for Forms */
 .link {
     color: #008080;
     text-decoration: none;
 }
+
 .link:hover {
     text-decoration: underline;
 }
+
 /* ===== Statistics Section ===== */
 .stats {
     text-align: center;
@@ -330,11 +342,13 @@ footer .contact-info a:hover {
     /* background: url('/images/GandiQuote.jpg') no-repeat center center/cover; */
     color: #333;
 }
+
 .stats-title {
     font-size: 2.5rem;
     margin-bottom: 2rem;
     color: #333;
 }
+
 .stats-container {
     display: flex;
     justify-content: center;
@@ -342,6 +356,7 @@ footer .contact-info a:hover {
     flex-wrap: wrap;
     margin-bottom: 3rem; /* Adds spacing below the stat boxes */
 }
+
 .stat-box {
     background: rgba(255, 255, 255, 0.9);
     padding: 2rem;
@@ -352,21 +367,25 @@ footer .contact-info a:hover {
     flex: 1;
     max-width: 300px;
 }
+
 .stat-number {
     font-size: 3rem;
     font-weight: bold;
     color: #4A4A8A; /* Customize to match your theme */
     margin-bottom: 1rem;
 }
+
 .stat-box p {
     font-size: 1.2rem;
     color: #666;
 }
+
 /* Learn More Button Below Stats */
 .stats-btn-container {
     text-align: center;
     margin-top: 2rem; /* Adjust margin to move the button further down */
 }
+
 .stats-btn {
     display: inline-block;
     background-color: #008080;
@@ -378,10 +397,12 @@ footer .contact-info a:hover {
     border-radius: 5px;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
+
 .stats-btn:hover {
     background-color: #005F5F;
     transform: scale(1.05); /* Slight zoom effect on hover */
 }
+
 .sponsor-logos {
     display: flex;
     flex-wrap: wrap;
@@ -398,4 +419,4 @@ footer .contact-info a:hover {
   }
   .sponsor-logos img:hover {
     transform: scale(1.1); /* Slightly enlarges the image on hover */
-  }
+}
