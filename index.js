@@ -8,8 +8,6 @@ let security = false;
 
 const port = process.env.PORT || 5500;
 
-const bcrypt = require('bcrypt');
-
 app.set("view engine", "ejs");
 
 app.set("views", path.join(__dirname, "views"));
@@ -18,7 +16,6 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.urlencoded({extended: true}));
-
 
 
 // Routes to Pages
@@ -66,7 +63,6 @@ app.post('/vlogin', async (req, res) => {
         }
 
         // Compare the provided password with the stored hashed password
-        const isMatch = await bcrypt.compare(VPassword, storedHashedPassword);
 
         if (isMatch) {
             res.send('Login Successful!');
