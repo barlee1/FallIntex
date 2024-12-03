@@ -250,3 +250,88 @@ footer .contact-info a:hover {
 .open .card-content {
     display: block;
 }
+
+.story {
+    text-align: center; /* Centers all content in the story section */
+    padding: 3rem 1rem; /* Adds space around the section */
+    background-color: #f9f9f9; /* Light background for contrast */
+}
+
+.story h2 {
+    font-size: 2rem; /* Slightly larger heading */
+    margin-bottom: 1.5rem; /* Space below the heading */
+    color: #333; /* Darker text for readability */
+}
+
+.story-image {
+    width: auto; /* Allows the browser to determine width based on height and aspect ratio */
+    max-width: 80%; /* Ensures the image doesn't take up more than 80% of the container */
+    height: 200px; /* Sets a fixed height for a rectangular appearance */
+    object-fit: cover; /* Ensures the image fits within its dimensions while cropping excess */
+    border-radius: 10px; /* Optional: Adds rounded corners */
+    margin: 0 auto 1.5rem; /* Centers the image horizontally and adds space below */
+    display: block; /* Centers the image when margin auto is applied */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Adds a soft shadow for better aesthetics */
+}
+
+
+.story-text {
+    max-width: 800px; /* Restricts the width for readability */
+    margin: 0 auto; /* Centers the text */
+    text-align: justify; /* Justifies the text for a clean look */
+    line-height: 1.8; /* Improves text spacing */
+    color: #555; /* Softer color for body text */
+}
+
+.story-text p {
+    margin-bottom: 1.5rem; /* Adds space between paragraphs */
+}
+
+.story .btn {
+    display: inline-block; /* Ensures the button behaves like an inline element */
+    margin: 1.5rem auto 0; /* Adds space above the button and centers it horizontally */
+    background-color: #008080; /* Teal button color */
+    color: white;
+    padding: 0.7rem 1.5rem; /* Adds space inside the button */
+    text-decoration: none; /* Removes underline from the text */
+    border-radius: 5px; /* Rounds the button corners */
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    text-align: center; /* Ensures text inside the button is centered */
+}
+
+.story .btn:hover {
+    background-color: #005f5f; /* Darker teal on hover */
+}
+
+.hero {
+    position: relative;
+    height: 80vh;
+    background: url('/images/Homepage.jpg') no-repeat center center/cover; /* Add your image here */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+}
+
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.7); /* 70% transparent dark overlay */
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 800px;
+}
+/* Logo and Title Styles */
+.logo {
+    display: flex;
+    align-items: center; /* Aligns the image and text vertically */
+    gap: 10px; /* Adds spacing between the logo and text */
+}
+
+.logo-image {
+    width: 50px; /* Adjust the size of the logo */
+    height: auto; /* Maintains aspect ratio */
+    border-radius: 5px; /* Optional: Adds rounded corners */
+}
