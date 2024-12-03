@@ -1,7 +1,8 @@
 let express = require("express");
 let app = express();
 let path = require("path");
-
+let security = false;
+const port = process.env.PORT || 5500;
 // Configure view engine
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -87,7 +88,6 @@ app.post("/create-account", async (req, res) => {
 
 // ===================== Server Startup ===================== //
 
-const port = process.env.PORT || 5500;
 app.listen(port, () =>
     console.log(`Express App has started and server is listening on port ${port}!`)
 );
