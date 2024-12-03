@@ -57,22 +57,6 @@ app.get("/login", (req, res) => {
     res.render("login", { title: "Login" });
 });
 
-// Handle Login Form Submission
-app.post("/login", async (req, res) => {
-    const { username, password } = req.body;
-    try {
-        const user = await knex("users").where({ username }).first();
-
-        if (user && await bcrypt.compare(password, user.password)) {
-            res.send(`Welcome back, ${user.username}!`);
-        } else {
-            res.render("login", { title: "Login", error: "Invalid credentials" });
-        }
-    } catch (err) {
-        console.error(err);
-        res.status(500).send("An error occurred. Please try again.");
-    }
-});
 
 // Create Account Page
 app.get("/create-account", (req, res) => {
