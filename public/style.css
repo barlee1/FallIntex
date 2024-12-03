@@ -17,6 +17,7 @@ header {
     position: fixed; /* Sticky header */
     top: 0;
     z-index: 1000;
+    height: 80px; /* Set a specific height */
 }
 
 header .container {
@@ -33,6 +34,29 @@ header .logo h1 {
     margin: 0;
     font-weight: bold;
     color: white; /* Logo text color */
+}
+
+/* Header Logo Link */
+/* Header Logo Link */
+header .logo h1 a {
+    color: white !important; /* Ensure text is white */
+    text-decoration: none !important; /* Force remove underline */
+    font-weight: bold;
+}
+
+header .logo h1 a:visited {
+    color: white; /* Ensure visited links stay white */
+    text-decoration: none; /* Remove underline for visited links */
+}
+
+header .logo h1 a:hover {
+    text-decoration: underline; /* Optional hover underline */
+}
+
+header .logo h1 a:focus,
+header .logo h1 a:active {
+    text-decoration: none; /* No underline for focus or active states */
+    color: white; /* Keep the color consistent */
 }
 
 header nav ul {
@@ -55,6 +79,11 @@ header nav ul li a {
 header nav ul li a:hover {
     background-color: #008080; /* Highlight on hover */
     border-radius: 5px; /* Rounded hover effect */
+}
+
+/* Main Content */
+.main-content {
+    padding-top: 80px; /* Match the header height */
 }
 
 /* Hero Section */
