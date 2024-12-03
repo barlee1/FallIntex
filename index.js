@@ -6,7 +6,7 @@ let path = require("path");
 
 let security = false;
 
-const port = process.env.port || 5500;
+const port = process.env.PORT || 5500;
 
 const bcrypt = require('bcrypt');
 
@@ -19,7 +19,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.urlencoded({extended: true}));
 
-app.use(express.static(path.join(__dirname, 'public')));
 
 
 // Routes to Pages
