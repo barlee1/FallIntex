@@ -21,11 +21,8 @@ app.use(express.urlencoded({extended: true}));
 // Routes to Pages
 // home
 app.get('/', (req, res) => {
-    res.render('homepage', {
-        title: 'Turtle Shelter Project',
-        aboutText: 'Custom About Text if needed...',
-        jensStory: 'Custom Story Text if needed...'
-    });
+    const error = null;
+    res.render('homepage', { error });
 });
 
 //about
@@ -40,40 +37,6 @@ app.get('/volunteer', (req, res) => {
     res.render("volunteer", { error }); // Pass 'error' to the template
 });
 
-
-app.post('/vlogin', async (req, res) => {
-    const { VLogin, VPassword } = req.body;
-
-    // Function to find userpassword by username
-    async function findUserByUsername(username) {
-        const result = await db('Volunteers')
-            .select('VPassword')
-            .where('Vlogin', username)
-            .first();
-
-        return result ? result.VPassword : null; // Return hashed password or null if not found
-    }
-
-    try {
-        // Retrieve the hashed password from the database using the username
-        const storedHashedPassword = await findUserByUsername(VLogin);
-
-        if (!storedHashedPassword) {
-            return res.status(401).send('Invalid username or password.');
-        }
-
-        // Compare the provided password with the stored hashed password
-
-        if (isMatch) {
-            res.send('Login Successful!');
-        } else {
-            res.status(401).send('Invalid username or password.');
-        }
-    } catch (error) {
-        console.error('Error during login process:', error);
-        res.status(500).send('An error occurred during the login process.');
-    }
-});
 
 //donate
 app.get('/donate', (req, res) => {
