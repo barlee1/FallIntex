@@ -28,7 +28,7 @@ const knex = require("knex")({
         port: 5432,
     },
 });
-=======
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.urlencoded({extended: true}));
@@ -60,7 +60,6 @@ app.get("/volunteer", (req, res) => {
 
 // Donate Page
 app.get("/donate", (req, res) => {
-=======
 
 app.post('/vlogin', async (req, res) => {
     const { VLogin, VPassword } = req.body;
