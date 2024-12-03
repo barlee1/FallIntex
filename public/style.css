@@ -312,3 +312,24 @@ footer .contact-info a:hover {
     max-width: 100%;
     border-radius: 5px;
 }
+
+.sponsor-logos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Adds spacing between images */
+    justify-content: center; /* Centers the images */
+  }
+  
+  .sponsor-logos img {
+    width: 150px; /* Set the width for all images */
+    height: auto; /* Maintains the aspect ratio */
+    object-fit: contain; /* Ensures images fit nicely within the size constraints */
+    border: 1px solid #ddd; /* Optional: Add a border for styling */
+    border-radius: 5px; /* Optional: Round the corners */
+    transition: transform 0.3s ease; /* Smooth scaling effect on hover */
+  }
+  
+  .sponsor-logos img:hover {
+    transform: scale(1.1); /* Slightly enlarges the image on hover */
+  }
+  
