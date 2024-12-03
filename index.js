@@ -27,13 +27,13 @@ const knex = require("knex") ({
 
 // ===================== Routes ===================== //
 
-// Home Page
-app.get("/", (req, res) => {
-    res.render("homepage", {
-        title: "Turtle Shelter Project",
-        aboutText: "Custom About Text if needed...",
-        jensStory: "Custom Story Text if needed...",
-    });
+
+// Routes to Pages
+// home
+app.get('/', (req, res) => {
+    const error = null;
+    res.render('homepage', { error });
+
 });
 
 // About Page
@@ -48,9 +48,12 @@ app.get("/volunteer", (req, res) => {
     res.render("volunteer", { error });
 });
 
-// Donate Page
-app.get("/donate", (req, res) => {
-    res.render("donate", { title: "Donate" });
+
+
+//donate
+app.get('/donate', (req, res) => {
+    const error = null;
+    res.render("donate", { error }); // Pass 'error' to the template
 });
 
 
