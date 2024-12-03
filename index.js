@@ -1,98 +1,107 @@
 let express = require("express");
-
 let app = express();
-
 let path = require("path");
 
-let security = false;
-
-const port = process.env.PORT || 5500;
-
+// Configure view engine
 app.set("view engine", "ejs");
-
 app.set("views", path.join(__dirname, "views"));
 
 // Serve static files from the 'public' folder
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
+app.use(express.urlencoded({ extended: true }));
 
-app.use(express.urlencoded({extended: true}));
+// Database connection using Knex.js
+const knex = require("knex")({
+    client: "pg",
+    connection: {
+        host: "localhost",
+        user: "kyleebrown",
+        password: "Admin",
+        database: "assignment3",
+        port: 5432,
+    },
+});
 
+// ===================== Routes ===================== //
 
-// Routes to Pages
-// home
-app.get('/', (req, res) => {
-    res.render('homepage', {
-        title: 'Turtle Shelter Project',
-        aboutText: 'Custom About Text if needed...',
-        jensStory: 'Custom Story Text if needed...'
+// Home Page
+app.get("/", (req, res) => {
+    res.render("homepage", {
+        title: "Turtle Shelter Project",
+        aboutText: "Custom About Text if needed...",
+        jensStory: "Custom Story Text if needed...",
     });
 });
 
-//about
-app.get('/about', (req, res) => {
+// About Page
+app.get("/about", (req, res) => {
     const error = null;
-    res.render("about", { error }); // Pass 'error' to the template
+    res.render("about", { error });
 });
 
-//Volunteer
-app.get('/volunteer', (req, res) => {
+// Volunteer Page
+app.get("/volunteer", (req, res) => {
     const error = null;
-    res.render("volunteer", { error }); // Pass 'error' to the template
+    res.render("volunteer", { error });
+});
+
+// Donate Page
+app.get("/donate", (req, res) => {
+    res.render("donate", { title: "Donate" });
 });
 
 
-app.post('/vlogin', async (req, res) => {
-    const { VLogin, VPassword } = req.body;
 
-    // Function to find userpassword by username
-    async function findUserByUsername(username) {
-        const result = await db('Volunteers')
-            .select('VPassword')
-            .where('Vlogin', username)
-            .first();
+// Login Page
+app.get("/login", (req, res) => {
+    res.render("login", { title: "Login" });
+});
 
-        return result ? result.VPassword : null; // Return hashed password or null if not found
-    }
-
+// Handle Login Form Submission
+app.post("/login", async (req, res) => {
+    const { username, password } = req.body;
     try {
-        // Retrieve the hashed password from the database using the username
-        const storedHashedPassword = await findUserByUsername(VLogin);
+        const user = await knex("users").where({ username }).first();
 
-        if (!storedHashedPassword) {
-            return res.status(401).send('Invalid username or password.');
-        }
-
-        // Compare the provided password with the stored hashed password
-
-        if (isMatch) {
-            res.send('Login Successful!');
+        if (user && await bcrypt.compare(password, user.password)) {
+            res.send(`Welcome back, ${user.username}!`);
         } else {
-            res.status(401).send('Invalid username or password.');
+            res.render("login", { title: "Login", error: "Invalid credentials" });
         }
-    } catch (error) {
-        console.error('Error during login process:', error);
-        res.status(500).send('An error occurred during the login process.');
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("An error occurred. Please try again.");
     }
 });
 
-//donate
-app.get('/donate', (req, res) => {
-    const error = null;
-    res.render("donate", { error }); // Pass 'error' to the template
+// Create Account Page
+app.get("/create-account", (req, res) => {
+    res.render("create-account", { title: "Create Account" });
 });
 
+// Handle Create Account Form Submission
+app.post("/create-account", async (req, res) => {
+    const { firstname, lastname, email, city, state, phonenumber } = req.body;
+    try {
+        await knex("users").insert({
+            firstname,
+            lastname,
+            email,
+            city,
+            state,
+            phonenumber,
+        });
 
-const knex = require("knex") ({
-    client : "pg",
-    connection : {
-        host : process.env.RDS_HOSTNAME || "localhost",
-        user : process.env.RDS_USERNAME || "kyleebrown",
-        password : process.env.RDS_PASSWORD || "Admin",
-        database : process.env.RDS_DB_NAME || "assignment3",
-        port : process.env.RDS_PORT || 5432,
-        ssl : process.env.DB_SSL ? {rejectUnauthorized : false} : false
+        res.send("Account created successfully!");
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("An error occurred. Please try again.");
     }
 });
 
+// ===================== Server Startup ===================== //
 
-app.listen(port, () => console.log("Express App has started and server is listening!"));
+const port = process.env.PORT || 5500;
+app.listen(port, () =>
+    console.log(`Express App has started and server is listening on port ${port}!`)
+);
