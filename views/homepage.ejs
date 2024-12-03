@@ -9,44 +9,37 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-        <!-- Nav Bar -->
-        <%- include("partials/navbar") %>
+    <!-- Nav Bar -->
+    <%- include("partials/navbar") %>
 
-
-    <section class="hero">
+    <section class="hero" style="background-image: url('/images/Homepage.jpg'); background-size: cover; background-position: center;">
         <div class="hero-overlay">
             <h2>Every Life Has Value. Every Person Can Serve</h2>
             <h1>STARTS WITH YOU</h1>
             <a href="#help" class="btn">Learn More</a>
         </div>
     </section>
+    
 
     <main>
-        <section id="about" class="about">
+        <!-- Jen's Story Section -->
+        <section id="story" class="story">
             <div class="content">
-                <h2>What is a Turtle Shelter Vest?</h2>
-                <p>A high-tech but simple solution to help save lives – a portable "shelter" you can carry with you, just like a turtle… and you can help!</p>
-                <p>One winter when Jen was homeless, 7 of her friends froze to death. She found a solution: High-tech foam vests that are inexpensive, keep a person warm to 10 degrees below zero, and alleviate suffering.</p>
-                <p><em>YOU</em> can request vests for your community – and you can make vests with your friends, business colleagues, church members, or club members too!</p>
-            </div>
-        </section>
-
-        <section id="actions" class="actions">
-            <div class="action-item">
-                <h3>About</h3>
-                <p>Learn Jen's story, from homelessness to saving lives, plus our mission, team, and all about the tech that makes our vests so special.</p>
-                <a href="#about" class="link">Learn More →</a>
-            </div>
-            <div class="logo-image">
-                <img src="/images/turtle-logo.png" alt="Every Life Has Value Logo">
-            </div>
-            <div class="action-item">
-                <h3>Take Action</h3>
-                <p>Ready to take the next step? You can request vests, donate, make vests yourself, or organize an event!</p>
-                <a href="#help" class="link">Find Out How →</a>
+                <h2>Jen's Story</h2>
+                <img src="/images/Jen.png" alt="Jen" class="story-image">
+                <div class="story-text">
+                    <p>My addiction led me to being homeless on several occasions throughout my life, and during that time I personally knew seven people who froze to death. When I first learned about this lifesaving technology, my mind flooded with ideas on how many people's lives this could save. I'd recently been homeless during an extreme winter. It had been one of the coldest winters Utah had suffered in a long time, so the misery of surviving the bitter cold was still very fresh in my mind.</p>
+                    <p>While I was homeless, I remember feeling the chill all the way to my bones. I couldn't even think or function. It completely zapped me of my energy so much that I was losing my will to live. Everything felt beyond overwhelming. Simple tasks, like finding a bathroom, seemed to feel like huge obstacles. The crazy thing about it was: I had a car I was living in; I had a storage unit I could hang out in during the day and at night; and I had an income that was sufficient for my needs. But being homeless completely broke me - even with all of the resources I had available to me.</p>
+                    <p>I began thinking that if homelessness crushed me, even with all that I had, then what would it do to someone who had much less, or even nothing? I wanted to do something to help people with this burden. When I learned about foam clothing, I knew without a doubt that God was telling me - "THIS IS HOW YOU CAN HELP!"</p>
+                    <p>...We want these vests to go to people living outdoors or who don't have access to shelters, because they are the ones who need this technology the most. The vests are called "Turtle Shelters" because they are a portable shelter - just like a turtle taking its shelter with it.</p>
+                    <p>
+                    <a href="/help" class="btn">Learn How You Can Help</a>
+                    </p>
+                </div>
             </div>
         </section>
     </main>
+
     <!-- Footer -->
     <%- include("partials/footer") %>
 </body>
