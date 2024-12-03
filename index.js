@@ -8,6 +8,8 @@ let security = false;
 
 const port = 5500;
 
+const bcrypt = require('bcrypt');
+
 app.set("view engine", "ejs");
 
 app.set("views", path.join(__dirname, "views"));
@@ -40,6 +42,42 @@ app.get('/about', (req, res) => {
 app.get('/volunteer', (req, res) => {
     const error = null;
     res.render("volunteer", { error }); // Pass 'error' to the template
+});
+
+
+app.post('/vlogin', async (req, res) => {
+    const { VLogin, VPassword } = req.body;
+
+    // Function to find userpassword by username
+    async function findUserByUsername(username) {
+        const result = await db('Volunteers')
+            .select('VPassword')
+            .where('Vlogin', username)
+            .first();
+
+        return result ? result.VPassword : null; // Return hashed password or null if not found
+    }
+
+    try {
+        // Retrieve the hashed password from the database using the username
+        const storedHashedPassword = await findUserByUsername(VLogin);
+
+        if (!storedHashedPassword) {
+            return res.status(401).send('Invalid username or password.');
+        }
+
+        // Compare the provided password with the stored hashed password
+        const isMatch = await bcrypt.compare(VPassword, storedHashedPassword);
+
+        if (isMatch) {
+            res.send('Login Successful!');
+        } else {
+            res.status(401).send('Invalid username or password.');
+        }
+    } catch (error) {
+        console.error('Error during login process:', error);
+        res.status(500).send('An error occurred during the login process.');
+    }
 });
 
 //donate
