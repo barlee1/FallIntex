@@ -8,6 +8,12 @@ body {
     background-color: #f4f4f9; /* Light background for better contrast */
 }
 
+.main-content
+{
+    padding-top: 80px; /* Adjust for a taller header on smaller screens */
+
+}
+
 /* ===== HEADER (Navigation Bar) ===== */
 header {
     background-color: #222; /* Dark header for better contrast */
